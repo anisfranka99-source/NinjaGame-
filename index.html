@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NARUTO RP — Shinobi Legacy</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #080b12;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+    main { padding: 28px; max-width: 600px; }
+    .symbol { font-size: 56px; margin-bottom: 15px; }
+    .tag { color: #e4a15b; letter-spacing: 5px; font-size: 12px; }
+    h1 { font-size: clamp(38px, 10vw, 68px); margin: 20px 0; }
+    h1 span { color: #e4a15b; }
+    p { color: #aab2c2; line-height: 1.8; }
+    button {
+      margin-top: 22px; padding: 16px 35px;
+      background: #d99048; color: #101018;
+      border: 0; border-radius: 5px;
+      font-weight: bold; font-size: 15px;
+    }
+    #message { color: #e4a15b; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="symbol">忍</div>
+    <div class="tag">LE DESTIN DES SHINOBIS</div>
+    <h1>SHINOBI <span>LEGACY</span></h1>
+    <p>Chaque shinobi possède une histoire.<br>
+    Chaque décision peut changer son destin.</p>
+    <button onclick="document.getElementById('message').textContent='Ton aventure commence bientôt, jeune shinobi.'">
+      COMMENCER L'AVENTURE
+    </button>
+    <div id="message"></div>
+  </main>
+</body>
+</html>
