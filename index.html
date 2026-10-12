@@ -1,47 +1,133 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NARUTO RP — Shinobi Legacy</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #080b12;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: grid;
-      place-items: center;
-      text-align: center;
-    }
-    main { padding: 28px; max-width: 600px; }
-    .symbol { font-size: 56px; margin-bottom: 15px; }
-    .tag { color: #e4a15b; letter-spacing: 5px; font-size: 12px; }
-    h1 { font-size: clamp(38px, 10vw, 68px); margin: 20px 0; }
-    h1 span { color: #e4a15b; }
-    p { color: #aab2c2; line-height: 1.8; }
-    button {
-      margin-top: 22px; padding: 16px 35px;
-      background: #d99048; color: #101018;
-      border: 0; border-radius: 5px;
-      font-weight: bold; font-size: 15px;
-    }
-    #message { color: #e4a15b; margin-top: 20px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shinobi Legacy | Naruto RP</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090b12;color:#f4f2ed;font-family:Arial,sans-serif}
+header{padding:22px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292b34}
+.logo{font-weight:900;letter-spacing:2px;color:#e6a65b}
+nav{color:#aaa;font-size:12px}
+.hero{min-height:78vh;display:flex;align-items:center;padding:65px 8%;background:radial-gradient(ellipse at 75% 40%,#392a26 0%,#16141a 30%,#090b12 72%)}
+.content{max-width:650px}
+.tag{color:#e6a65b;letter-spacing:4px;font-size:11px}
+h1{font-size:clamp(42px,10vw,78px);line-height:1;margin:24px 0}
+h1 span{color:#e6a65b}
+p{color:#b6b7c1;line-height:1.8}
+button{background:#e6a65b;color:#17120e;border:0;padding:15px 22px;font-weight:bold;cursor:pointer;margin-top:14px}
+button:hover{background:#ffca88}
+section{padding:55px 8%;max-width:900px;margin:auto}
+.panel{background:#12151e;border:1px solid #30333e;padding:24px;margin-top:22px}
+input,select,textarea{display:block;width:100%;margin:10px 0 18px;padding:13px;background:#090b12;border:1px solid #373b48;color:white;border-radius:3px}
+label{font-size:13px;color:#d4d4db}
+.hidden{display:none}
+.small{font-size:12px;color:#888}
+footer{text-align:center;padding:30px;color:#777;font-size:12px}
+</style>
 </head>
 <body>
-  <main>
-    <div class="symbol">忍</div>
-    <div class="tag">LE DESTIN DES SHINOBIS</div>
-    <h1>SHINOBI <span>LEGACY</span></h1>
-    <p>Chaque shinobi possède une histoire.<br>
-    Chaque décision peut changer son destin.</p>
-    <button onclick="document.getElementById('message').textContent='Ton aventure commence bientôt, jeune shinobi.'">
-      COMMENCER L'AVENTURE
-    </button>
-    <div id="message"></div>
-  </main>
+<header>
+  <div class="logo">忍 SHINOBI LEGACY</div>
+  <nav>UN MONDE · TON DESTIN</nav>
+</header>
+<main>
+<div class="hero">
+  <div class="content">
+    <div class="tag">LE MONDE DES SHINOBIS</div>
+    <h1>ÉCRIS<br>TON <span>HISTOIRE.</span></h1>
+    <p>Les grands ninjas ne naissent pas légendaires.<br>
+    Ils le deviennent à travers leurs choix, leurs erreurs et leurs combats.</p>
+    <button onclick="showCreation()">CRÉER MON SHINOBI ↗</button>
+  </div>
+</div>
+<section id="creation" class="hidden">
+  <div class="tag">CHAPITRE 01 — NOUVELLE VIE</div>
+  <h2>Qui seras-tu ?</h2>
+  <p>Ton aventure commence ici. Chaque shinobi a son propre chemin.</p>
+  <div class="panel">
+    <label>Nom du personnage</label>
+    <input id="name" placeholder="Ex : Akira Uchiha" maxlength="30">
+    <label>Âge</label>
+    <input id="age" type="number" min="8" max="80" value="13">
+    <label>Village d'origine</label>
+    <select id="village">
+      <option>Konoha — Village de la Feuille</option>
+      <option>Kiri — Village de la Brume</option>
+      <option>Kumo — Village des Nuages</option>
+      <option>Suna — Village du Sable</option>
+      <option>Iwa — Village de la Roche</option>
+    </select>
+    <label>Ton objectif</label>
+    <select id="goal">
+      <option>Protéger ceux qui me sont chers</option>
+      <option>Devenir un ninja reconnu</option>
+      <option>Découvrir la vérité sur mon passé</option>
+      <option>Venger l'honneur de ma famille</option>
+    </select>
+    <button onclick="startGame()">COMMENCER MON HISTOIRE</button>
+  </div>
+</section>
+<section id="story" class="hidden">
+  <div class="tag">CHAPITRE 01 — LE PREMIER JOUR</div>
+  <h2 id="welcome"></h2>
+  <div class="panel">
+    <p id="narration"></p>
+    <p><b>Un ninja en uniforme s'approche de toi.</b></p>
+    <p>« Hé, toi ! C'est ton premier jour ici ? Le responsable de l'académie veut te voir. Mais un marchand affirme qu'on lui a volé un rouleau près de la porte du village. »</p>
+    <p><b>Que fais-tu ?</b></p>
+    <button onclick="choose(1)">Aller à l'académie</button>
+    <button onclick="choose(2)">Interroger le marchand</button>
+    <button onclick="choose(3)">Examiner la porte du village</button>
+    <p id="result"></p>
+    <button id="continue" class="hidden" onclick="nextScene()">CONTINUER →</button>
+  </div>
+  <p class="small">Progression enregistrée sur cet appareil si le navigateur le permet.</p>
+</section>
+</main>
+<footer>SHINOBI LEGACY · Une aventure inspirée de l'univers ninja.</footer>
+<script>
+let player={};
+let chosen=0;
+function showCreation(){
+ document.getElementById('creation').classList.remove('hidden');
+ document.getElementById('creation').scrollIntoView({behavior:'smooth'});
+}
+function startGame(){
+ const name=document.getElementById('name').value.trim();
+ const age=Number(document.getElementById('age').value);
+ if(!name){alert('Entre le nom de ton personnage.');return;}
+ if(age<8||age>80){alert('Entre un âge compris entre 8 et 80 ans.');return;}
+ player={name,age,village:document.getElementById('village').value,
+ goal:document.getElementById('goal').value};
+ try{localStorage.setItem('shinobiPlayer',JSON.stringify(player));}catch(e){}
+ document.getElementById('welcome').textContent='Bienvenue, '+player.name+'.';
+ document.getElementById('narration').textContent='Tu arrives à '+player.village+'. Tu as '+player.age+' ans et tu rêves de '+player.goal.toLowerCase()+'. Le village poursuit sa routine, mais quelque chose semble troubler les habitants ce matin.';
+ document.getElementById('story').classList.remove('hidden');
+ document.getElementById('story').scrollIntoView({behavior:'smooth'});
+}
+function choose(choice){
+ chosen=choice;
+ const messages={
+  1:'Tu te diriges vers l’académie. Un instructeur note ton arrivée et te demande de revenir après avoir fait connaissance avec les habitants.',
+  2:'Tu interroges le marchand. Il se souvient d’un détail : la personne portait des sandales couvertes de boue fraîche.',
+  3:'Tu examines le sol près de la porte. Des traces de boue partent vers une ruelle étroite.'
+ };
+ document.getElementById('result').textContent=messages[choice];
+ document.getElementById('continue').classList.remove('hidden');
+}
+function nextScene(){
+ const texts={
+  1:'À l’académie, un élève te met au défi de participer à un exercice. Tu peux accepter ou demander d’abord des informations sur le rouleau.',
+  2:'Le marchand te remercie. Une ruelle attire ton attention. Tu peux suivre les traces ou retourner à l’académie.',
+  3:'La ruelle est presque vide. Un habitant affirme avoir vu quelqu’un presser le pas. Tu peux lui poser des questions ou continuer seul.'
+ };
+ document.getElementById('narration').textContent=texts[chosen];
+ document.getElementById('result').textContent='Ton choix a orienté la suite de ton aventure.';
+ document.getElementById('continue').classList.add('hidden');
+ document.getElementById('story').scrollIntoView({behavior:'smooth'});
+}
+</script>
 </body>
 </html>
